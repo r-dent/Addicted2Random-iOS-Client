@@ -1,3 +1,6 @@
 [submodule "vendor/SocketRocket"]
 	path = vendor/SocketRocket
 	url = https://github.com/square/SocketRocket.git
+[submodule "vendor/CocoaOSC"]
+	path = vendor/CocoaOSC
+	url = https://github.com/danieldickison/CocoaOSC.git
