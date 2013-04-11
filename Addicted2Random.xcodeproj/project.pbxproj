@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3026FD5D171700BE00552EB3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5C171700BE00552EB3 /* libicucore.dylib */; };
+		3026FD5F171700D100552EB3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5E171700D100552EB3 /* CFNetwork.framework */; };
+		3026FD61171700DB00552EB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD60171700DB00552EB3 /* Security.framework */; };
 		30B63AD91715DB7600C74A8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63AD81715DB7600C74A8C /* UIKit.framework */; };
 		30B63ADB1715DB7600C74A8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63ADA1715DB7600C74A8C /* Foundation.framework */; };
 		30B63ADD1715DB7600C74A8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63ADC1715DB7600C74A8C /* CoreGraphics.framework */; };
@@ -20,7 +23,42 @@
 		30B63AF51715DB7700C74A8C /* a2rViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30B63AF31715DB7700C74A8C /* a2rViewController.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3026FD541717001300552EB3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6B2082D1450F597009315AF;
+			remoteInfo = SocketRocket;
+		};
+		3026FD561717001300552EB3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F668C880153E91210044DBAC;
+			remoteInfo = SocketRocketOSX;
+		};
+		3026FD581717001300552EB3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6BDA802145900D200FE3253;
+			remoteInfo = SRWebSocketTests;
+		};
+		3026FD5A1717001300552EB3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F62417E314D52F3C003CE997;
+			remoteInfo = TestChat;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SocketRocket.xcodeproj; path = vendor/SocketRocket/SocketRocket.xcodeproj; sourceTree = "<group>"; };
+		3026FD5C171700BE00552EB3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		3026FD5E171700D100552EB3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3026FD60171700DB00552EB3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		30B63AD51715DB7600C74A8C /* Addicted2Random.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Addicted2Random.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B63AD81715DB7600C74A8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30B63ADA1715DB7600C74A8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3026FD61171700DB00552EB3 /* Security.framework in Frameworks */,
+				3026FD5F171700D100552EB3 /* CFNetwork.framework in Frameworks */,
+				3026FD5D171700BE00552EB3 /* libicucore.dylib in Frameworks */,
 				30B63AD91715DB7600C74A8C /* UIKit.framework in Frameworks */,
 				30B63ADB1715DB7600C74A8C /* Foundation.framework in Frameworks */,
 				30B63ADD1715DB7600C74A8C /* CoreGraphics.framework in Frameworks */,
@@ -53,12 +94,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3026FD371716FF2000552EB3 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */,
+			);
+			name = vendor;
+			sourceTree = "<group>";
+		};
+		3026FD4E1717001300552EB3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3026FD551717001300552EB3 /* libSocketRocket.a */,
+				3026FD571717001300552EB3 /* SocketRocket.framework */,
+				3026FD591717001300552EB3 /* SRWebSocketTests.octest */,
+				3026FD5B1717001300552EB3 /* TestChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		30B63ACC1715DB7600C74A8C = {
 			isa = PBXGroup;
 			children = (
+				3026FD60171700DB00552EB3 /* Security.framework */,
+				3026FD5E171700D100552EB3 /* CFNetwork.framework */,
+				3026FD5C171700BE00552EB3 /* libicucore.dylib */,
 				30B63ADE1715DB7600C74A8C /* Addicted2Random */,
 				30B63AD71715DB7600C74A8C /* Frameworks */,
 				30B63AD61715DB7600C74A8C /* Products */,
+				3026FD371716FF2000552EB3 /* vendor */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,12 +211,49 @@
 			mainGroup = 30B63ACC1715DB7600C74A8C;
 			productRefGroup = 30B63AD61715DB7600C74A8C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3026FD4E1717001300552EB3 /* Products */;
+					ProjectRef = 3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				30B63AD41715DB7600C74A8C /* Addicted2Random */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3026FD551717001300552EB3 /* libSocketRocket.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSocketRocket.a;
+			remoteRef = 3026FD541717001300552EB3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3026FD571717001300552EB3 /* SocketRocket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SocketRocket.framework;
+			remoteRef = 3026FD561717001300552EB3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3026FD591717001300552EB3 /* SRWebSocketTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SRWebSocketTests.octest;
+			remoteRef = 3026FD581717001300552EB3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3026FD5B1717001300552EB3 /* TestChat.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = TestChat.app;
+			remoteRef = 3026FD5A1717001300552EB3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		30B63AD31715DB7600C74A8C /* Resources */ = {
@@ -264,7 +365,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Addicted2Random/Addicted2Random-Prefix.pch";
 				INFOPLIST_FILE = "Addicted2Random/Addicted2Random-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "vendor/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -275,7 +378,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Addicted2Random/Addicted2Random-Prefix.pch";
 				INFOPLIST_FILE = "Addicted2Random/Addicted2Random-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "vendor/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -299,6 +404,7 @@
 				30B63AFA1715DB7700C74A8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
