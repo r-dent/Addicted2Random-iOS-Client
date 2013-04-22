@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		30219DA3172548E20083DBFA /* A2RServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30219DA2172548E20083DBFA /* A2RServers.plist */; };
+		30219DA417255A710083DBFA /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD551717001300552EB3 /* libSocketRocket.a */; };
 		3026FD5D171700BE00552EB3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5C171700BE00552EB3 /* libicucore.dylib */; };
 		3026FD5F171700D100552EB3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5E171700D100552EB3 /* CFNetwork.framework */; };
 		3026FD61171700DB00552EB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD60171700DB00552EB3 /* Security.framework */; };
@@ -84,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30219DA417255A710083DBFA /* libSocketRocket.a in Frameworks */,
 				3026FD61171700DB00552EB3 /* Security.framework in Frameworks */,
 				3026FD5F171700D100552EB3 /* CFNetwork.framework in Frameworks */,
 				3026FD5D171700BE00552EB3 /* libicucore.dylib in Frameworks */,

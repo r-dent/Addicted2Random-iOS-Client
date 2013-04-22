@@ -6,7 +6,7 @@
 		<key>name</key>
 		<string>Radiofabrik</string>
 		<key>address</key>
-		<string>http://example.com</string>
+		<string>ws://master.radiofabrik.at:8080</string>
 		<key>description</key>
 		<string>The neverending Server</string>
 	</dict>
