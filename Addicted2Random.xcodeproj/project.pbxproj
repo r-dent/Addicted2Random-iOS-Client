@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30219DA3172548E20083DBFA /* A2RServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30219DA2172548E20083DBFA /* A2RServers.plist */; };
 		30219DA417255A710083DBFA /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD551717001300552EB3 /* libSocketRocket.a */; };
+		30219DAA172582510083DBFA /* A2RConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219DA9172582510083DBFA /* A2RConnection.m */; };
 		3026FD5D171700BE00552EB3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5C171700BE00552EB3 /* libicucore.dylib */; };
 		3026FD5F171700D100552EB3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5E171700D100552EB3 /* CFNetwork.framework */; };
 		3026FD61171700DB00552EB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD60171700DB00552EB3 /* Security.framework */; };
@@ -58,6 +59,8 @@
 
 /* Begin PBXFileReference section */
 		30219DA2172548E20083DBFA /* A2RServers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = A2RServers.plist; sourceTree = "<group>"; };
+		30219DA8172582510083DBFA /* A2RConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RConnection.h; sourceTree = "<group>"; };
+		30219DA9172582510083DBFA /* A2RConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RConnection.m; sourceTree = "<group>"; };
 		3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SocketRocket.xcodeproj; path = vendor/SocketRocket/SocketRocket.xcodeproj; sourceTree = "<group>"; };
 		3026FD5C171700BE00552EB3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		3026FD5E171700D100552EB3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -153,6 +156,8 @@
 			children = (
 				30B63AE71715DB7700C74A8C /* A2RAppDelegate.h */,
 				30B63AE81715DB7700C74A8C /* A2RAppDelegate.m */,
+				30219DA8172582510083DBFA /* A2RConnection.h */,
+				30219DA9172582510083DBFA /* A2RConnection.m */,
 				30B63AF01715DB7700C74A8C /* A2RServerListController.h */,
 				30B63AF11715DB7700C74A8C /* A2RServerListController.m */,
 				30B63AF31715DB7700C74A8C /* A2RServerListController.xib */,
@@ -284,6 +289,7 @@
 				30B63AE51715DB7700C74A8C /* main.m in Sources */,
 				30B63AE91715DB7700C74A8C /* A2RAppDelegate.m in Sources */,
 				30B63AF21715DB7700C74A8C /* A2RServerListController.m in Sources */,
+				30219DAA172582510083DBFA /* A2RConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
