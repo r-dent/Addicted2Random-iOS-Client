@@ -6,18 +6,19 @@
 //  Copyright (c) 2013 Roman Gille. All rights reserved.
 //
 
-#import "a2rAppDelegate.h"
+#import "A2RAppDelegate.h"
 
-#import "a2rViewController.h"
+#import "A2RServerListController.h"
 
-@implementation a2rAppDelegate
+@implementation A2RAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[a2rViewController alloc] initWithNibName:@"a2rViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.viewController = [[A2RServerListController alloc] initWithNibName:@"a2rViewController" bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     return YES;
 }

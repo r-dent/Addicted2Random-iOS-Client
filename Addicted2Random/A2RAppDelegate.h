@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class a2rViewController;
+@class A2RServerListController;
 
-@interface a2rAppDelegate : UIResponder <UIApplicationDelegate>
+@interface A2RAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) a2rViewController *viewController;
+@property (strong, nonatomic) A2RServerListController *viewController;
 
 @end

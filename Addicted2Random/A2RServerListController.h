@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface a2rViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextView *textView;
-- (IBAction)buttonPressed:(id)sender;
+@interface A2RServerListController : UIViewController
 
 @end
