@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30219DA3172548E20083DBFA /* A2RServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30219DA2172548E20083DBFA /* A2RServers.plist */; };
 		3026FD5D171700BE00552EB3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5C171700BE00552EB3 /* libicucore.dylib */; };
 		3026FD5F171700D100552EB3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5E171700D100552EB3 /* CFNetwork.framework */; };
 		3026FD61171700DB00552EB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD60171700DB00552EB3 /* Security.framework */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30219DA2172548E20083DBFA /* A2RServers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = A2RServers.plist; sourceTree = "<group>"; };
 		3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SocketRocket.xcodeproj; path = vendor/SocketRocket/SocketRocket.xcodeproj; sourceTree = "<group>"; };
 		3026FD5C171700BE00552EB3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		3026FD5E171700D100552EB3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -167,6 +169,7 @@
 				30B63AEA1715DB7700C74A8C /* Default.png */,
 				30B63AEC1715DB7700C74A8C /* Default@2x.png */,
 				30B63AEE1715DB7700C74A8C /* Default-568h@2x.png */,
+				30219DA2172548E20083DBFA /* A2RServers.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				30B63AED1715DB7700C74A8C /* Default@2x.png in Resources */,
 				30B63AEF1715DB7700C74A8C /* Default-568h@2x.png in Resources */,
 				30B63AF51715DB7700C74A8C /* A2RServerListController.xib in Resources */,
+				30219DA3172548E20083DBFA /* A2RServers.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

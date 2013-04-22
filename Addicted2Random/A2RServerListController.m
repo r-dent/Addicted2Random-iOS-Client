@@ -12,17 +12,25 @@
 
 @interface A2RServerListController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) NSArray *serverList;
+
 @end
 
 @implementation A2RServerListController
 
-static NSString* ka2rServerListCell = @"a2rServerListCell";
+static NSString* kA2RServerListCell = @"a2rServerListCell";
+static NSString* kA2RServerListKey = @"a2rServerList";
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.title = NSLocalizedString(@"Serverliste", @"Title of the Server list view");
+    self.serverList = [[NSUserDefaults standardUserDefaults] arrayForKey:kA2RServerListKey];
+    if (!_serverList.count) {
+        NSString *serversFilePath = [[NSBundle mainBundle] pathForResource:@"A2RServers" ofType:@"plist"];
+        self.serverList = [[NSArray alloc] initWithContentsOfFile:serversFilePath];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,17 +44,20 @@ static NSString* ka2rServerListCell = @"a2rServerListCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _serverList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:ka2rServerListCell];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kA2RServerListCell];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ka2rServerListCell];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kA2RServerListCell];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = @"RadioFabrik";
-    cell.detailTextLabel.text = @"The Great Server of RadioFabrik";
+    
+    NSDictionary *serverDict = (NSDictionary*)_serverList[indexPath.row];
+    
+    cell.textLabel.text = serverDict[@"name"];
+    cell.detailTextLabel.text = serverDict[@"description"];
     return cell;
 }
 
