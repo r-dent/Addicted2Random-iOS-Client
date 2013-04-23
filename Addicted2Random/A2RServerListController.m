@@ -9,6 +9,7 @@
 #import "A2RServerListController.h"
 
 #import "A2RConnection.h"
+#import "A2RJamListController.h"
 
 
 @interface A2RServerListController () <UITableViewDataSource, UITableViewDelegate> {
@@ -81,14 +82,25 @@ static NSString* kA2RServerListKey = @"a2rServerList";
     cell.accessoryView = throbber;
     _waitingForServerResponse = YES;
     
-    NSDictionary *serverDict = (NSDictionary*)_serverList[indexPath.row];
-    self.connection = [[A2RConnection alloc] initWithURL:[NSURL URLWithString:serverDict[@"address"]] established:^{
-        [_connection dispatchRPCMethod:@"jams.getAll" withParameters:@"" andCallback:^(id result) {
-            NSArray *jams = result;
-            UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-            cell.accessoryView = nil;
+    if (_connection != nil) {
+        [_connection closeWithCallback:^(void) {
+            self.connection = nil;
+            [self tableView:tableView didSelectRowAtIndexPath:indexPath];
         }];
-    }];
+    }
+    else {
+        NSDictionary *serverDict = (NSDictionary*)_serverList[indexPath.row];
+        self.connection = [[A2RConnection alloc] initWithURL:[NSURL URLWithString:serverDict[@"address"]] established:^{
+            [_connection dispatchRPCMethod:@"jams.getAll" withParameters:nil andCallback:^(id result) {
+                NSArray *jams = result;
+                UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+                cell.accessoryView = nil;
+                A2RJamListController* vc = [[A2RJamListController alloc] initWithJams:jams andConnection:_connection];
+                vc.title = serverDict[@"name"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }];
+        }];
+    }
 }
 
 

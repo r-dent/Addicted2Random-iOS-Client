@@ -11,11 +11,13 @@
 #import "SRWebSocket.h"
 
 typedef void (^A2RConnectionEstablishedBlock)(void);
+typedef void (^A2RConnectionClosedBlock)(void);
 typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
 
 @interface A2RConnection () <SRWebSocketDelegate> {
     int _RPCIdCounter;
     A2RConnectionEstablishedBlock _establishedBlock;
+    A2RConnectionClosedBlock _closedBlock;
 }
 
 @property (nonatomic, strong) SRWebSocket *socket;
@@ -36,11 +38,23 @@ typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
     return self;
 }
 
-- (void)dispatchRPCMethod:(NSString *)methodString withParameters:(NSString *)parametersString andCallback:(void (^)(id))completionBlock {
+- (void)dealloc {
+    self.socket = nil;
+}
+
+- (void)closeWithCallback:(void (^)(void))closedBlock {
+    if (_socket != nil) {
+        [_socket close];
+        _closedBlock = closedBlock;
+    }
+}
+
+- (void)dispatchRPCMethod:(NSString *)methodString withParameters:(NSArray *)parameters andCallback:(void (^)(id result))completionBlock {
     _RPCIdCounter++;
+    parameters = (parameters.count) ? parameters : [NSArray array];
     NSDictionary *message = @{@"jsonrpc": @"2.0",
                               @"method": methodString,
-                              @"parameters": parametersString,
+                              @"params": parameters,
                               @"id": [NSNumber numberWithInt:_RPCIdCounter]};
     NSError *error;
     NSData *data = [NSJSONSerialization dataWithJSONObject:message options:0 error:&error];
@@ -54,7 +68,7 @@ typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
 #pragma mark - SRWebSocket delegate
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
-    NSLog(@"message: %@", [message class]);
+    NSLog(@"message: %@", message);
     NSError *error;
     NSDictionary *messageDict = [NSJSONSerialization JSONObjectWithData:[((NSString*)message) dataUsingEncoding:NSUTF8StringEncoding]  options:0 error:&error];
     A2RConnectionJSON_RPCCompleteBlock completionBlock = _callbacksDict[[NSString stringWithFormat:@"%@", messageDict[@"id"]]];
@@ -73,6 +87,7 @@ typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
     NSLog(@"Closed connection to %@ with code %i because of %@", webSocket.url.host, code, reason);
     NSLog(@"This was %@ clean close.", (wasClean ? @"a" : @"NO"));
+    _closedBlock();
 }
 
 @end

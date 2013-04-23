@@ -12,6 +12,8 @@
 
 - (id)initWithURL:(NSURL *)url established:(void (^)(void))establishedBlock;
 
-- (void)dispatchRPCMethod:(NSString *)methodString withParameters:(NSString *)parametersString andCallback:(void (^)(id))completionBlock;
+- (void)closeWithCallback:(void (^)(void))closedBlock;
+
+- (void)dispatchRPCMethod:(NSString *)methodString withParameters:(NSArray *)parameters andCallback:(void (^)(id result))completionBlock;
 
 @end
