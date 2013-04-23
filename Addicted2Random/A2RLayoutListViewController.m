@@ -1,25 +1,23 @@
 //
-//  A2RJamListController.m
+//  A2RLayoutListViewController.m
 //  Addicted2Random
 //
 //  Created by Roman Gille on 23.04.13.
 //  Copyright (c) 2013 Roman Gille. All rights reserved.
 //
 
-#import "A2RJamListController.h"
-
 #import "A2RLayoutListViewController.h"
 
-@interface A2RJamListController () <UITableViewDataSource, UITableViewDelegate>
+@interface A2RLayoutListViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray* jams;
+@property (nonatomic, strong) NSArray* layouts;
 @property (nonatomic, strong) A2RConnection* connection;
 
 @end
 
-@implementation A2RJamListController
+@implementation A2RLayoutListViewController
 
-static NSString* kA2RJamListCell = @"a2rServerListCell";
+static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,10 +28,10 @@ static NSString* kA2RJamListCell = @"a2rServerListCell";
     return self;
 }
 
-- (id)initWithJams:(NSArray*)jams andConnection:(A2RConnection*)connection {
+- (id)initWithLayouts:(NSArray*)layouts andConnection:(A2RConnection*)connection {
     self = [super init];
     self.connection = connection;
-    self.jams = jams;
+    self.layouts = layouts;
     return self;
 }
 
@@ -41,7 +39,7 @@ static NSString* kA2RJamListCell = @"a2rServerListCell";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    //self.title = NSLocalizedString(@"Jams", @"Title of jams list");
+    self.title = NSLocalizedString(@"Layouts", @"Title of layouts view");
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,9 +48,9 @@ static NSString* kA2RJamListCell = @"a2rServerListCell";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
+-(void)dealloc {
     self.connection = nil;
-    self.jams = nil;
+    self.layouts = nil;
 }
 
 #pragma mark - TableView stuff
@@ -62,17 +60,17 @@ static NSString* kA2RJamListCell = @"a2rServerListCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _jams.count;
+    return _layouts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kA2RJamListCell];
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kA2RLayoutCellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kA2RJamListCell];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kA2RLayoutCellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    NSDictionary *serverDict = (NSDictionary*)_jams[indexPath.row];
+    NSDictionary *serverDict = (NSDictionary*)_layouts[indexPath.row];
     cell.textLabel.text = serverDict[@"title"];
     cell.detailTextLabel.text = serverDict[@"description"];
     
@@ -82,14 +80,11 @@ static NSString* kA2RJamListCell = @"a2rServerListCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary *jamsDict = (NSDictionary*)_jams[indexPath.row];
-    [_connection dispatchRPCMethod:@"jams.getLayouts" withParameters:@[jamsDict[@"id"]] andCallback:^(id result) {
-        NSArray *layouts = result;
+    NSDictionary *layoutDict = (NSDictionary*)_layouts[indexPath.row];
+    [_connection dispatchRPCMethod:@"jams.getLayout" withParameters:@[_jam[@"id"] ,layoutDict[@"name"]] andCallback:^(id result) {
+        NSString *layout = result;
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
         cell.accessoryView = nil;
-        A2RLayoutListViewController *vc = [[A2RLayoutListViewController alloc]initWithLayouts:layouts andConnection:_connection];
-        vc.jam = jamsDict;
-        [self.navigationController pushViewController:vc animated:YES];
     }];
 }
 
