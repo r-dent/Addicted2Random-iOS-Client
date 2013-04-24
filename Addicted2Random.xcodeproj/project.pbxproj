@@ -17,6 +17,8 @@
 		3026FD5D171700BE00552EB3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5C171700BE00552EB3 /* libicucore.dylib */; };
 		3026FD5F171700D100552EB3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD5E171700D100552EB3 /* CFNetwork.framework */; };
 		3026FD61171700DB00552EB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD60171700DB00552EB3 /* Security.framework */; };
+		3032D20E172814AC00F2AFC5 /* A2RSpinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3032D20C172814AC00F2AFC5 /* A2RSpinnerViewController.m */; };
+		3032D20F172814AC00F2AFC5 /* A2RSpinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */; };
 		30B63AD91715DB7600C74A8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63AD81715DB7600C74A8C /* UIKit.framework */; };
 		30B63ADB1715DB7600C74A8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63ADA1715DB7600C74A8C /* Foundation.framework */; };
 		30B63ADD1715DB7600C74A8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63ADC1715DB7600C74A8C /* CoreGraphics.framework */; };
@@ -75,6 +77,9 @@
 		3026FD5C171700BE00552EB3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		3026FD5E171700D100552EB3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3026FD60171700DB00552EB3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3032D20B172814AC00F2AFC5 /* A2RSpinnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RSpinnerViewController.h; sourceTree = "<group>"; };
+		3032D20C172814AC00F2AFC5 /* A2RSpinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RSpinnerViewController.m; sourceTree = "<group>"; };
+		3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A2RSpinnerViewController.xib; sourceTree = "<group>"; };
 		30B63AD51715DB7600C74A8C /* Addicted2Random.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Addicted2Random.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B63AD81715DB7600C74A8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30B63ADA1715DB7600C74A8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -177,6 +182,9 @@
 				30B63AF01715DB7700C74A8C /* A2RServerListController.h */,
 				30B63AF11715DB7700C74A8C /* A2RServerListController.m */,
 				30B63AF31715DB7700C74A8C /* A2RServerListController.xib */,
+				3032D20B172814AC00F2AFC5 /* A2RSpinnerViewController.h */,
+				3032D20C172814AC00F2AFC5 /* A2RSpinnerViewController.m */,
+				3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */,
 				30B63ADF1715DB7600C74A8C /* Supporting Files */,
 			);
 			path = Addicted2Random;
@@ -294,6 +302,7 @@
 				30219DA3172548E20083DBFA /* A2RServers.plist in Resources */,
 				3022336717268C6800B42913 /* A2RJamListController.xib in Resources */,
 				3022337117269D0700B42913 /* A2RLayoutListViewController.xib in Resources */,
+				3032D20F172814AC00F2AFC5 /* A2RSpinnerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +319,7 @@
 				30219DAA172582510083DBFA /* A2RConnection.m in Sources */,
 				3022336617268C6800B42913 /* A2RJamListController.m in Sources */,
 				3022337017269D0700B42913 /* A2RLayoutListViewController.m in Sources */,
+				3032D20E172814AC00F2AFC5 /* A2RSpinnerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

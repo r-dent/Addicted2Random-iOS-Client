@@ -8,6 +8,8 @@
 
 #import "A2RLayoutListViewController.h"
 
+#import "A2RSpinnerViewController.h"
+
 @interface A2RLayoutListViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray* layouts;
@@ -82,7 +84,25 @@ static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
     
     NSDictionary *layoutDict = (NSDictionary*)_layouts[indexPath.row];
     [_connection dispatchRPCMethod:@"jams.getLayout" withParameters:@[_jam[@"id"] ,layoutDict[@"name"]] andCallback:^(id result) {
-        NSString *layout = result;
+        NSDictionary *layout = result;
+        NSArray *sections = layout[@"sections"];
+        NSDictionary *spinnerElement;
+        
+        for (NSDictionary *section in sections) {
+            if (((NSArray*)section[@"elements"]).count) {
+                for (NSDictionary *element in section[@"elements"]) {
+                    if ([@"Spinner" isEqualToString:element[@"type"]]) {
+                        spinnerElement = element;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if (spinnerElement != nil) {
+            A2RSpinnerViewController *vc = [[A2RSpinnerViewController alloc] initWithSpinner:spinnerElement];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
         cell.accessoryView = nil;
     }];
