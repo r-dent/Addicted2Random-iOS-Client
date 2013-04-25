@@ -10,5 +10,13 @@
 		<key>description</key>
 		<string>The neverending Server</string>
 	</dict>
+	<dict>
+		<key>description</key>
+		<string>Alex sein lokaler Server</string>
+		<key>address</key>
+		<string>ws://192.168.1.100:8080</string>
+		<key>name</key>
+		<string>Alex Local</string>
+	</dict>
 </array>
 </plist>

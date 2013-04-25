@@ -100,7 +100,7 @@ static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
         }
         
         if (spinnerElement != nil) {
-            A2RSpinnerViewController *vc = [[A2RSpinnerViewController alloc] initWithSpinner:spinnerElement];
+            A2RSpinnerViewController *vc = [[A2RSpinnerViewController alloc] initWithSpinner:spinnerElement andConnection:_connection];
             [self.navigationController pushViewController:vc animated:YES];
         }
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];

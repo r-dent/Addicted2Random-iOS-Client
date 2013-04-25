@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "A2RConnection.h"
+
 @interface A2RSpinnerViewController : UIViewController
 
-- (id)initWithSpinner:(NSDictionary*)spinner;
+- (id)initWithSpinner:(NSDictionary *)spinner andConnection:(A2RConnection *)connection;
 
 @end

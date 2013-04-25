@@ -16,4 +16,23 @@
 
 - (void)dispatchRPCMethod:(NSString *)methodString withParameters:(NSArray *)parameters andCallback:(void (^)(id result))completionBlock;
 
+- (void)sendValues:(NSArray*)values toOSCAddress:(NSString*)address;
+
+@end
+
+
+
+@interface A2ROSCValue : NSObject
+
+typedef enum {
+    A2ROSCDataTypeInt,
+    A2ROSCDataTypeFloat,
+    A2ROSCDataTypeString
+}A2ROSCDataType;
+
++ (A2ROSCValue*)valueWithObject:(NSObject*)object ofType:(A2ROSCDataType)type;
+
+@property (nonatomic, assign) A2ROSCDataType type;
+@property (nonatomic, strong) NSObject* value;
+
 @end

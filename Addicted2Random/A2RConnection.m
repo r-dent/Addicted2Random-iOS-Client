@@ -65,6 +65,10 @@ typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
     
 }
 
+- (void)sendValues:(NSArray *)values toOSCAddress:(NSString *)address {
+    
+}
+
 #pragma mark - SRWebSocket delegate
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
@@ -88,6 +92,18 @@ typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
     NSLog(@"Closed connection to %@ with code %i because of %@", webSocket.url.host, code, reason);
     NSLog(@"This was %@ clean close.", (wasClean ? @"a" : @"NO"));
     _closedBlock();
+}
+
+@end
+
+
+@implementation A2ROSCValue
+
++ (A2ROSCValue *)valueWithObject:(NSObject *)object ofType:(A2ROSCDataType)type {
+    A2ROSCValue* value = [[A2ROSCValue alloc] init];
+    value.value = object;
+    value.type = type;
+    return value;
 }
 
 @end
