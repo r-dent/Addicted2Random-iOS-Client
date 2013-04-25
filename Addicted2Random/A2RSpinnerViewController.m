@@ -10,10 +10,23 @@
 
 #import "A2RTouchView.h"
 
-@interface A2RSpinnerViewController ()
+typedef enum {
+    A2RSpinnerModeTouch = 0,
+    A2RSpinnerModeAcceleration,
+}A2RSpinnerMode;
+
+@interface A2RSpinnerViewController () <UIAccelerometerDelegate> {
+    A2RSpinnerMode _mode;
+    NSString *_OSCAddress;
+    UIAccelerometer *_accelerometer;
+}
 
 @property (nonatomic, strong) NSDictionary *spinner;
 @property (nonatomic, strong) A2RConnection *connection;
+@property (strong, nonatomic) IBOutlet A2RTouchView *touchView;
+@property (weak, nonatomic) IBOutlet UIButton *modeButton;
+
+- (IBAction)modeButtonPressed:(id)sender;
 
 @end
 
@@ -32,6 +45,7 @@
     self = [super init];
     self.spinner = spinner;
     self.connection = connection;
+    _mode = A2RSpinnerModeTouch;
     return self;
 }
 
@@ -40,22 +54,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = NSLocalizedString(@"Spinner", @"Spinner View title");
-    A2RTouchView *touchView = [[A2RTouchView alloc] init];
-    touchView.frame = self.view.frame;
-    [touchView setTouchBlock:^(NSSet *touches, CGPoint position) {
-        //A2ROSCValue* value = [A2ROSCValue valueWithObject:[NSNumber numberWithFloat:position.y] ofType:A2ROSCDataTypeFloat];
-        OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-        if (_spinner[@"address"] != nil) {
-            message.address = _spinner[@"address"];
+    
+    if (_spinner[@"address"] != nil) {
+        _OSCAddress = _spinner[@"address"];
+    }
+    else {
+        _OSCAddress = _spinner[@"outs"][0][@"address"];
+    }
+    
+    NSString *oscAddress = _OSCAddress;
+    A2RSpinnerMode spinnerMode = _mode;
+    A2RConnection *connection = _connection;
+    [_touchView setTouchBlock:^(NSSet *touches, CGPoint position) {
+        if (spinnerMode == A2RSpinnerModeTouch) {
+            OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
+            message.address = oscAddress;
+            [message addFloat:position.y];
+            [connection sendOSCMessage:message];
+            NSLog(@"Touch Position: %f %f", position.x, position.y);
         }
-        else {
-            message.address = _spinner[@"outs"][0][@"address"];
-        }
-        [message addFloat:position.y];
-        [_connection sendOSCMessage:message];
-        NSLog(@"%f %f", position.x, position.y);
     }];
-    [self.view addSubview:touchView];
+    
+    _accelerometer = [UIAccelerometer sharedAccelerometer];
+    _accelerometer.updateInterval = .1f;
+    _accelerometer.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,4 +86,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)modeButtonPressed:(id)sender {
+    if (_mode == A2RSpinnerModeTouch) {
+        _mode = A2RSpinnerModeAcceleration;
+        [_modeButton setTitle:@"Mode: Accelleration" forState:UIControlStateNormal];
+    }
+    else {
+        _mode = A2RSpinnerModeTouch;
+        [_modeButton setTitle:@"Mode: Touch" forState:UIControlStateNormal];
+    }
+}
+
+#pragma mark UIAccelerometer Delegate Methods
+
+- (void)accelerometer:(UIAccelerometer *)meter didAccelerate:(UIAcceleration *)acceleration {
+    if (_mode == A2RSpinnerModeAcceleration) {
+        OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
+        message.address = _OSCAddress;
+        [message addFloat:acceleration.z];
+        [_connection sendOSCMessage:message];
+        NSLog(@"Acceleration x:%f y:%f z:%f", acceleration.x, acceleration.y, acceleration.z);
+    }
+    
+}
 @end

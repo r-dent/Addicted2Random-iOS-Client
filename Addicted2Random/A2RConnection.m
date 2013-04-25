@@ -96,15 +96,3 @@ typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
 }
 
 @end
-
-
-@implementation A2ROSCValue
-
-+ (A2ROSCValue *)valueWithObject:(NSObject *)object ofType:(A2ROSCDataType)type {
-    A2ROSCValue* value = [[A2ROSCValue alloc] init];
-    value.value = object;
-    value.type = type;
-    return value;
-}
-
-@end

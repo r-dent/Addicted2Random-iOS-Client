@@ -21,20 +21,3 @@
 - (void)sendOSCMessage:(OSCMutableMessage*)message;
 
 @end
-
-
-
-@interface A2ROSCValue : NSObject
-
-typedef enum {
-    A2ROSCDataTypeInt,
-    A2ROSCDataTypeFloat,
-    A2ROSCDataTypeString
-}A2ROSCDataType;
-
-+ (A2ROSCValue*)valueWithObject:(NSObject*)object ofType:(A2ROSCDataType)type;
-
-@property (nonatomic, assign) A2ROSCDataType type;
-@property (nonatomic, strong) NSObject* value;
-
-@end
