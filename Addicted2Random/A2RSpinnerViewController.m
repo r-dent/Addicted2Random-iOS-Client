@@ -19,6 +19,7 @@ typedef enum {
     A2RSpinnerMode _mode;
     NSString *_OSCAddress;
     UIAccelerometer *_accelerometer;
+    UIAcceleration *_lastAcceleration;
 }
 
 @property (nonatomic, strong) NSDictionary *spinner;
@@ -86,6 +87,10 @@ typedef enum {
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    _accelerometer.delegate = nil;
+}
+
 - (IBAction)modeButtonPressed:(id)sender {
     if (_mode == A2RSpinnerModeTouch) {
         _mode = A2RSpinnerModeAcceleration;
@@ -101,11 +106,22 @@ typedef enum {
 
 - (void)accelerometer:(UIAccelerometer *)meter didAccelerate:(UIAcceleration *)acceleration {
     if (_mode == A2RSpinnerModeAcceleration) {
-        OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-        message.address = _OSCAddress;
-        [message addFloat:acceleration.z];
-        [_connection sendOSCMessage:message];
-        NSLog(@"Acceleration x:%f y:%f z:%f", acceleration.x, acceleration.y, acceleration.z);
+       // NSLog(@"Acceleration x:%f y:%f z:%f", acceleration.x, acceleration.y, acceleration.z);
+        
+        if(_lastAcceleration != nil) {
+            // sqrt((B[0] - A[0])² + (B[1] - A[1])² + (B[2] - A[2])²)
+            CGFloat x = pow(acceleration.x - _lastAcceleration.x, 2.f);
+            CGFloat y = pow(acceleration.y - _lastAcceleration.y, 2.f);
+            CGFloat z = pow(acceleration.z - _lastAcceleration.z, 2.f);
+            CGFloat spinValue = sqrt(x + y + z);
+            // NSLog(@"spinValue: %f", spinValue);
+            
+            OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
+            message.address = _OSCAddress;
+            [message addFloat:spinValue];
+            [_connection sendOSCMessage:message];
+        }
+        _lastAcceleration = acceleration;
     }
     
 }
