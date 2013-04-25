@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301CE77317292DEA0082FD5C /* A2RTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 301CE77217292DEA0082FD5C /* A2RTouchView.m */; };
 		30219DA3172548E20083DBFA /* A2RServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30219DA2172548E20083DBFA /* A2RServers.plist */; };
 		30219DA417255A710083DBFA /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD551717001300552EB3 /* libSocketRocket.a */; };
 		30219DAA172582510083DBFA /* A2RConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 30219DA9172582510083DBFA /* A2RConnection.m */; };
@@ -64,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		301CE77117292DEA0082FD5C /* A2RTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RTouchView.h; sourceTree = "<group>"; };
+		301CE77217292DEA0082FD5C /* A2RTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RTouchView.m; sourceTree = "<group>"; };
 		30219DA2172548E20083DBFA /* A2RServers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = A2RServers.plist; sourceTree = "<group>"; };
 		30219DA8172582510083DBFA /* A2RConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RConnection.h; sourceTree = "<group>"; };
 		30219DA9172582510083DBFA /* A2RConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RConnection.m; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				3032D20B172814AC00F2AFC5 /* A2RSpinnerViewController.h */,
 				3032D20C172814AC00F2AFC5 /* A2RSpinnerViewController.m */,
 				3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */,
+				301CE77117292DEA0082FD5C /* A2RTouchView.h */,
+				301CE77217292DEA0082FD5C /* A2RTouchView.m */,
 				30B63ADF1715DB7600C74A8C /* Supporting Files */,
 			);
 			path = Addicted2Random;
@@ -320,6 +325,7 @@
 				3022336617268C6800B42913 /* A2RJamListController.m in Sources */,
 				3022337017269D0700B42913 /* A2RLayoutListViewController.m in Sources */,
 				3032D20E172814AC00F2AFC5 /* A2RSpinnerViewController.m in Sources */,
+				301CE77317292DEA0082FD5C /* A2RTouchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
