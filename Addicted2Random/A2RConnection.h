@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "OSCPacket.h"
+
 @interface A2RConnection : NSObject
 
 - (id)initWithURL:(NSURL *)url established:(void (^)(void))establishedBlock;
@@ -16,7 +18,7 @@
 
 - (void)dispatchRPCMethod:(NSString *)methodString withParameters:(NSArray *)parameters andCallback:(void (^)(id result))completionBlock;
 
-- (void)sendValues:(NSArray*)values toOSCAddress:(NSString*)address;
+- (void)sendOSCMessage:(OSCMutableMessage*)message;
 
 @end
 

@@ -43,8 +43,16 @@
     A2RTouchView *touchView = [[A2RTouchView alloc] init];
     touchView.frame = self.view.frame;
     [touchView setTouchBlock:^(NSSet *touches, CGPoint position) {
-        A2ROSCValue* value = [A2ROSCValue valueWithObject:[NSNumber numberWithFloat:position.y] ofType:A2ROSCDataTypeFloat];
-        [_connection sendValues:@[value] toOSCAddress:_spinner[@"address"]];
+        //A2ROSCValue* value = [A2ROSCValue valueWithObject:[NSNumber numberWithFloat:position.y] ofType:A2ROSCDataTypeFloat];
+        OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
+        if (_spinner[@"address"] != nil) {
+            message.address = _spinner[@"address"];
+        }
+        else {
+            message.address = _spinner[@"outs"][0][@"address"];
+        }
+        [message addFloat:position.y];
+        [_connection sendOSCMessage:message];
         NSLog(@"%f %f", position.x, position.y);
     }];
     [self.view addSubview:touchView];

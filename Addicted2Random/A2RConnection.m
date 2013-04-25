@@ -9,6 +9,7 @@
 #import "A2RConnection.h"
 
 #import "SRWebSocket.h"
+#import "OSCPacket.h"
 
 typedef void (^A2RConnectionEstablishedBlock)(void);
 typedef void (^A2RConnectionClosedBlock)(void);
@@ -65,8 +66,8 @@ typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
     
 }
 
-- (void)sendValues:(NSArray *)values toOSCAddress:(NSString *)address {
-    
+- (void)sendOSCMessage:(OSCMutableMessage *)message {
+    [_socket send:[message encode]];
 }
 
 #pragma mark - SRWebSocket delegate
