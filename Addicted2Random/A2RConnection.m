@@ -67,6 +67,7 @@ typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
 }
 
 - (void)sendOSCMessage:(OSCMutableMessage *)message {
+    //NSLog(@"OSC to %@ with value %@", message.address, message.arguments);
     [_socket send:[message encode]];
 }
 

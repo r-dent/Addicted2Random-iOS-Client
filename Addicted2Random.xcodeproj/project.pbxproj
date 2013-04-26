@@ -22,6 +22,7 @@
 		3026FD61171700DB00552EB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3026FD60171700DB00552EB3 /* Security.framework */; };
 		3032D20E172814AC00F2AFC5 /* A2RSpinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3032D20C172814AC00F2AFC5 /* A2RSpinnerViewController.m */; };
 		3032D20F172814AC00F2AFC5 /* A2RSpinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */; };
+		307BA834172A835800ADC8C2 /* A2RAccelerationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307BA833172A835800ADC8C2 /* A2RAccelerationView.m */; };
 		30B63AD91715DB7600C74A8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63AD81715DB7600C74A8C /* UIKit.framework */; };
 		30B63ADB1715DB7600C74A8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63ADA1715DB7600C74A8C /* Foundation.framework */; };
 		30B63ADD1715DB7600C74A8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63ADC1715DB7600C74A8C /* CoreGraphics.framework */; };
@@ -89,6 +90,8 @@
 		3032D20B172814AC00F2AFC5 /* A2RSpinnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RSpinnerViewController.h; sourceTree = "<group>"; };
 		3032D20C172814AC00F2AFC5 /* A2RSpinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RSpinnerViewController.m; sourceTree = "<group>"; };
 		3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A2RSpinnerViewController.xib; sourceTree = "<group>"; };
+		307BA832172A835800ADC8C2 /* A2RAccelerationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RAccelerationView.h; sourceTree = "<group>"; };
+		307BA833172A835800ADC8C2 /* A2RAccelerationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RAccelerationView.m; sourceTree = "<group>"; };
 		30B63AD51715DB7600C74A8C /* Addicted2Random.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Addicted2Random.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B63AD81715DB7600C74A8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30B63ADA1715DB7600C74A8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -182,6 +185,8 @@
 		30B63ADE1715DB7600C74A8C /* Addicted2Random */ = {
 			isa = PBXGroup;
 			children = (
+				307BA832172A835800ADC8C2 /* A2RAccelerationView.h */,
+				307BA833172A835800ADC8C2 /* A2RAccelerationView.m */,
 				30B63AE71715DB7700C74A8C /* A2RAppDelegate.h */,
 				30B63AE81715DB7700C74A8C /* A2RAppDelegate.m */,
 				30219DA8172582510083DBFA /* A2RConnection.h */,
@@ -338,6 +343,7 @@
 				301CE77317292DEA0082FD5C /* A2RTouchView.m in Sources */,
 				301CE77A172959AF0082FD5C /* OSCPacket.m in Sources */,
 				301CE77D17295B970082FD5C /* NS+OSCAdditions.m in Sources */,
+				307BA834172A835800ADC8C2 /* A2RAccelerationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

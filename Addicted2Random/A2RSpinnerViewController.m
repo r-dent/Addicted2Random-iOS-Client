@@ -9,21 +9,21 @@
 #import "A2RSpinnerViewController.h"
 
 #import "A2RTouchView.h"
+#import "A2RAccelerationView.h"
 
 typedef enum {
     A2RSpinnerModeTouch = 0,
     A2RSpinnerModeAcceleration,
 }A2RSpinnerMode;
 
-@interface A2RSpinnerViewController () <UIAccelerometerDelegate> {
+@interface A2RSpinnerViewController () <A2RAccelerationViewDelegate> {
     A2RSpinnerMode _mode;
     NSString *_OSCAddress;
-    UIAccelerometer *_accelerometer;
-    UIAcceleration *_lastAcceleration;
 }
 
 @property (nonatomic, strong) NSDictionary *spinner;
 @property (nonatomic, strong) A2RConnection *connection;
+@property (weak, nonatomic) IBOutlet A2RAccelerationView *accelerationView;
 @property (strong, nonatomic) IBOutlet A2RTouchView *touchView;
 @property (weak, nonatomic) IBOutlet UIButton *modeButton;
 
@@ -72,13 +72,9 @@ typedef enum {
             message.address = oscAddress;
             [message addFloat:position.y];
             [connection sendOSCMessage:message];
-            NSLog(@"Touch Position: %f %f", position.x, position.y);
+            //NSLog(@"Touch Position: %f %f", position.x, position.y);
         }
     }];
-    
-    _accelerometer = [UIAccelerometer sharedAccelerometer];
-    _accelerometer.updateInterval = .1f;
-    _accelerometer.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,42 +83,26 @@ typedef enum {
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    _accelerometer.delegate = nil;
-}
-
 - (IBAction)modeButtonPressed:(id)sender {
     if (_mode == A2RSpinnerModeTouch) {
         _mode = A2RSpinnerModeAcceleration;
+        _accelerationView.active = YES;
         [_modeButton setTitle:@"Mode: Accelleration" forState:UIControlStateNormal];
     }
     else {
+        _accelerationView.active = NO;
         _mode = A2RSpinnerModeTouch;
         [_modeButton setTitle:@"Mode: Touch" forState:UIControlStateNormal];
     }
 }
 
-#pragma mark UIAccelerometer Delegate Methods
+#pragma mark - A2RAccelerationView delegate
 
-- (void)accelerometer:(UIAccelerometer *)meter didAccelerate:(UIAcceleration *)acceleration {
-    if (_mode == A2RSpinnerModeAcceleration) {
-       // NSLog(@"Acceleration x:%f y:%f z:%f", acceleration.x, acceleration.y, acceleration.z);
-        
-        if(_lastAcceleration != nil) {
-            // sqrt((B[0] - A[0])² + (B[1] - A[1])² + (B[2] - A[2])²)
-            CGFloat x = pow(acceleration.x - _lastAcceleration.x, 2.f);
-            CGFloat y = pow(acceleration.y - _lastAcceleration.y, 2.f);
-            CGFloat z = pow(acceleration.z - _lastAcceleration.z, 2.f);
-            CGFloat spinValue = sqrt(x + y + z);
-            // NSLog(@"spinValue: %f", spinValue);
-            
-            OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-            message.address = _OSCAddress;
-            [message addFloat:spinValue];
-            [_connection sendOSCMessage:message];
-        }
-        _lastAcceleration = acceleration;
-    }
-    
+- (void)valueDidChange:(CGFloat)value {
+    OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
+    message.address = _OSCAddress;
+    [message addFloat:value];
+    [_connection sendOSCMessage:message];
 }
+
 @end
