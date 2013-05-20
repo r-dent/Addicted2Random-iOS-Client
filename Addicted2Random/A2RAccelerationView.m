@@ -18,7 +18,12 @@ typedef enum {
     UIAccelerometer *_accelerometer;
     UIAcceleration *_lastAcceleration;
     NSMutableArray *_values;
+    CGFloat _sourceY;
 }
+
+@property (nonatomic, strong) UIImageView *move;
+@property (nonatomic, strong) UIImageView *your;
+@property (nonatomic, strong) UIImageView *phone;
 
 @end
 
@@ -42,7 +47,19 @@ typedef enum {
 
 - (void)initValues {
     self.backgroundColor = [UIColor blackColor];
+    _sourceY = self.frame.size.height - 80;
     
+    self.move = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"word_move"]];
+    _move.center = CGPointMake(self.frame.size.width / 4, _sourceY);
+    [self addSubview:_move];
+    
+    self.your = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"word_your"]];
+    _your.center = CGPointMake(self.frame.size.width / 4 * 2, _sourceY);
+    [self addSubview:_your];
+    
+    self.phone = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"word_phone"]];
+    _phone.center = CGPointMake(self.frame.size.width / 4 * 3, _sourceY);
+    [self addSubview:_phone];
 }
 
 - (void)setDelegate:(id<A2RAccelerationViewDelegate>)delegate {
@@ -70,14 +87,15 @@ typedef enum {
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    CGPoint startPoint = CGPointMake((self.frame.size.width / 4), (self.frame.size.height / 4));
-    [self drawAccelerationsComponent:A2RAccelerationComponentX withStartingPoint:startPoint andColor:A2R_YELLOW];
+    CGFloat y = _sourceY;
+    CGPoint startPoint = CGPointMake((self.frame.size.width / 4), y);
+    [self drawAccelerationsComponent:A2RAccelerationComponentX withStartingPoint:startPoint andColor:A2R_RED];
     
-    startPoint = CGPointMake((self.frame.size.width / 4 * 2), (self.frame.size.height / 4));
+    startPoint = CGPointMake((self.frame.size.width / 4 * 2), y);
     [self drawAccelerationsComponent:A2RAccelerationComponentY withStartingPoint:startPoint andColor:A2R_BLUE];
     
-    startPoint = CGPointMake((self.frame.size.width / 4 * 3), (self.frame.size.height / 4));
-    [self drawAccelerationsComponent:A2RAccelerationComponentZ withStartingPoint:startPoint andColor:A2R_RED];
+    startPoint = CGPointMake((self.frame.size.width / 4 * 3), y);
+    [self drawAccelerationsComponent:A2RAccelerationComponentZ withStartingPoint:startPoint andColor:A2R_YELLOW];
 
 }
 
@@ -86,32 +104,44 @@ typedef enum {
     [color set];
     
     for (int i = 0; i < _values.count; i++) {
+        CGFloat componentValue = [self valueFromAcceleration:_values[_values.count - i - 1] component:component];
+        
+        CGPoint point = CGPointMake(startingPoint.x + (componentValue * 10), startingPoint.y - (i * 2));
+        
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path moveToPoint:currentPoint];
         [path setLineWidth: 6.f - MIN(5.f, i * .05f)];
-        UIAcceleration *value = _values[_values.count - i - 1];
-        CGFloat componentValue;
-        switch (component) {
-            case A2RAccelerationComponentY:
-                componentValue = value.y;
-                break;
-            case A2RAccelerationComponentZ:
-                componentValue = value.z;
-                break;
-                
-            default:
-                componentValue = value.x;
-                break;
-        }
-        //CGPoint point = CGPointMake(startingPoint.x + (value.x * 10 * (i % 2 == 0 ? 1 : -1)), startingPoint.y + (i * 2));
-        CGPoint point = CGPointMake(startingPoint.x + (componentValue * 10), startingPoint.y + (i * 2));
         [path addLineToPoint: point];
         [path stroke];
+        
         currentPoint = point;
-        if (point.y > self.frame.size.height - 40)
+        
+        if (point.y < 0)
             break;
     }
     
+    CGFloat componentValue = _values.count ? [self valueFromAcceleration:_values[_values.count - 1] component:component] : 0;
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path setLineWidth: 0.f];
+    [path addArcWithCenter:startingPoint radius:componentValue * 5 + 10 startAngle:0.f endAngle:M_PI * 2 clockwise:YES];
+    [path fill];
+    
+}
+
+- (CGFloat)valueFromAcceleration:(UIAcceleration*)acceleration component:(A2RAccelerationComponent)component {
+    switch (component) {
+        case A2RAccelerationComponentY:
+            return acceleration.y;
+            break;
+        case A2RAccelerationComponentZ:
+            return acceleration.z;
+            break;
+            
+        default:
+            return acceleration.x;
+            break;
+    }
 }
 
 
@@ -131,6 +161,10 @@ typedef enum {
             [_values addObject:acceleration];
             [self setNeedsDisplay];
             // NSLog(@"spinValue: %f", spinValue);
+            
+            _move.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1 + acceleration.x / 2, 1 + acceleration.x / 2);
+            _your.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1 + acceleration.y / 2, 1 + acceleration.y / 2);
+            _phone.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1 + acceleration.z / 2, 1 + acceleration.z / 2);
             
             if ([_delegate respondsToSelector:@selector(valueDidChange:)]) {
                 [_delegate valueDidChange:spinValue];
