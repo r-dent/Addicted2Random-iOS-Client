@@ -10,6 +10,8 @@
 
 #import "A2RConnection.h"
 #import "A2RJamListController.h"
+#import "A2RTableView.h"
+#import "A2RTableViewCell.h"
 
 
 @interface A2RServerListController () <UITableViewDataSource, UITableViewDelegate> {
@@ -18,6 +20,7 @@
 
 @property (nonatomic, strong) NSArray *serverList;
 @property (nonatomic, strong) A2RConnection *connection;
+@property (weak, nonatomic) IBOutlet A2RTableView *tableView;
 
 @end
 
@@ -31,6 +34,10 @@ static NSString* kA2RServerListKey = @"a2rServerList";
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.title = NSLocalizedString(@"Serverliste", @"Title of the Server list view");
+    
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([A2RTableViewCell class]) bundle:[NSBundle mainBundle]]
+     forCellReuseIdentifier:[A2RTableViewCell identifier]];
+    
     _waitingForServerResponse = NO;
     self.serverList = [[NSUserDefaults standardUserDefaults] arrayForKey:kA2RServerListKey];
     if (!_serverList.count) {
@@ -61,15 +68,12 @@ static NSString* kA2RServerListKey = @"a2rServerList";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kA2RServerListCell];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kA2RServerListCell];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
+    A2RTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[A2RTableViewCell identifier]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     NSDictionary *serverDict = (NSDictionary*)_serverList[indexPath.row];
-    cell.textLabel.text = serverDict[@"name"];
-    cell.detailTextLabel.text = serverDict[@"description"];
+    cell.title.text = serverDict[@"name"];
+    cell.description.text = serverDict[@"description"];
     
     return cell;
 }
@@ -77,7 +81,7 @@ static NSString* kA2RServerListKey = @"a2rServerList";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIActivityIndicatorView *throbber = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    UIActivityIndicatorView *throbber = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     [throbber startAnimating];
     cell.accessoryView = throbber;
     _waitingForServerResponse = YES;
@@ -101,6 +105,10 @@ static NSString* kA2RServerListKey = @"a2rServerList";
             }];
         }];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [A2RTableViewCell cellHeight];
 }
 
 

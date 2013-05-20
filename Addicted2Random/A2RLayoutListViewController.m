@@ -9,11 +9,14 @@
 #import "A2RLayoutListViewController.h"
 
 #import "A2RSpinnerViewController.h"
+#import "A2RTableView.h"
+#import "A2RTableViewCell.h"
 
 @interface A2RLayoutListViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray* layouts;
 @property (nonatomic, strong) A2RConnection* connection;
+@property (weak, nonatomic) IBOutlet A2RTableView *tableView;
 
 @end
 
@@ -42,6 +45,8 @@ static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = NSLocalizedString(@"Layouts", @"Title of layouts view");
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([A2RTableViewCell class]) bundle:[NSBundle mainBundle]]
+     forCellReuseIdentifier:[A2RTableViewCell identifier]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,15 +71,12 @@ static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:kA2RLayoutCellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kA2RLayoutCellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
+    A2RTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[A2RTableViewCell identifier]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     NSDictionary *serverDict = (NSDictionary*)_layouts[indexPath.row];
-    cell.textLabel.text = serverDict[@"title"];
-    cell.detailTextLabel.text = serverDict[@"description"];
+    cell.title.text = serverDict[@"title"];
+    cell.description.text = serverDict[@"description"];
     
     return cell;
 }
@@ -106,6 +108,10 @@ static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
         cell.accessoryView = nil;
     }];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [A2RTableViewCell cellHeight];
 }
 
 @end
