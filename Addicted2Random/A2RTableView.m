@@ -27,7 +27,7 @@
 
 - (void)setupLayout {
     self.backgroundColor = [UIColor blackColor];
-//    self.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 /*

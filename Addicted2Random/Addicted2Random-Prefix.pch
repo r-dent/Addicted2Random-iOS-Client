@@ -12,3 +12,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define A2R_RED [UIColor colorWithRed:227/255.f green:20/255.f blue:23/255.f alpha:1.f]
+#define A2R_BLUE [UIColor colorWithRed:20/255.f green:132/255.f blue:171/255.f alpha:1.f]
+#define A2R_YELLOW [UIColor colorWithRed:247/255.f green:164/255.f blue:14/255.f alpha:1.f]
