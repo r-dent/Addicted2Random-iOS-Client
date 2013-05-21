@@ -26,7 +26,6 @@
 
 @implementation A2RServerListController
 
-static NSString* kA2RServerListCell = @"a2rServerListCell";
 static NSString* kA2RServerListKey = @"a2rServerList";
 
 - (void)viewDidLoad
@@ -80,15 +79,12 @@ static NSString* kA2RServerListKey = @"a2rServerList";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIActivityIndicatorView *throbber = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    [throbber startAnimating];
-    cell.accessoryView = throbber;
-    _waitingForServerResponse = YES;
+    A2RTableViewCell *cell = (A2RTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     if (_connection != nil) {
         [_connection closeWithCallback:^(void) {
             self.connection = nil;
+            cell.style = A2RTableViewCellStyleDisclosure;
             [self tableView:tableView didSelectRowAtIndexPath:indexPath];
         }];
     }
@@ -97,13 +93,16 @@ static NSString* kA2RServerListKey = @"a2rServerList";
         self.connection = [[A2RConnection alloc] initWithURL:[NSURL URLWithString:serverDict[@"address"]] established:^{
             [_connection dispatchRPCMethod:@"jams.getAll" withParameters:nil andCallback:^(id result) {
                 NSArray *jams = result;
-                UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-                cell.accessoryView = nil;
+                cell.style = A2RTableViewCellStyleDisclosure;
                 A2RJamListController* vc = [[A2RJamListController alloc] initWithJams:jams andConnection:_connection];
                 vc.title = serverDict[@"name"];
                 [self.navigationController pushViewController:vc animated:YES];
             }];
+        } failed:^{
+            cell.style = A2RTableViewCellStyleDisclosure;
         }];
+        cell.style = A2RTableViewCellStyleLoading;
+        _waitingForServerResponse = YES;
     }
 }
 

@@ -21,9 +21,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    UIImageView* arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"disclosure"]];
-//    arrowView.highlightedImage = [UIImage imageNamed:@"disclosureIndicatorSelected.png"];
-    self.accessoryView = arrowView;
+    self.style = A2RTableViewCellStyleDisclosure;
     return self;
 }
 
@@ -40,6 +38,27 @@
 
 + (NSString *)identifier {
     return @"A2RTableViewCellIdentifier";
+}
+
+- (void)setStyle:(A2RTableViewCellStyle)style {
+    if (_style != style) {
+        switch (style) {
+            case A2RTableViewCellStyleLoading: {
+                UIActivityIndicatorView *throbber = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+                [throbber startAnimating];
+                self.accessoryView = throbber;
+                break;
+            }
+            case A2RTableViewCellStyleDisclosure: {
+                UIImageView* arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"disclosure"]];
+                self.accessoryView = arrowView;
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
 }
 
 @end

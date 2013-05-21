@@ -47,8 +47,7 @@ typedef enum {
 
 - (void)initValues {
     self.backgroundColor = [UIColor blackColor];
-    _sourceY = self.frame.size.height - 80;
-    
+    _sourceY = 80;
     self.move = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"word_move"]];
     _move.center = CGPointMake(self.frame.size.width / 4, _sourceY);
     [self addSubview:_move];
@@ -102,11 +101,12 @@ typedef enum {
 - (void)drawAccelerationsComponent:(A2RAccelerationComponent)component withStartingPoint:(CGPoint)startingPoint andColor:(UIColor*)color {
     CGPoint currentPoint = startingPoint;
     [color set];
+    BOOL flowUp = startingPoint.y >= self.frame.size.height / 2;
     
     for (int i = 0; i < _values.count; i++) {
         CGFloat componentValue = [self valueFromAcceleration:_values[_values.count - i - 1] component:component];
         
-        CGPoint point = CGPointMake(startingPoint.x + (componentValue * 10), startingPoint.y - (i * 2));
+        CGPoint point = CGPointMake(startingPoint.x + (componentValue * 10), startingPoint.y + ((flowUp ? -i : i) * 2));
         
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path moveToPoint:currentPoint];
@@ -116,7 +116,9 @@ typedef enum {
         
         currentPoint = point;
         
-        if (point.y < 0)
+        if (flowUp && point.y < 0)
+            break;
+        if (!flowUp && point.y > self.frame.size.height)
             break;
     }
     

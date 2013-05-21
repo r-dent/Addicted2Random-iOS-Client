@@ -10,9 +10,14 @@
 
 #import "OSCPacket.h"
 
+typedef void (^A2RConnectionEstablishedBlock)(void);
+typedef void (^A2RConnectionClosedBlock)(void);
+typedef void (^A2RConnectionFailedBlock)(void);
+typedef void (^A2RConnectionJSON_RPCCompleteBlock)(id result);
+
 @interface A2RConnection : NSObject
 
-- (id)initWithURL:(NSURL *)url established:(void (^)(void))establishedBlock;
+- (id)initWithURL:(NSURL *)url established:(A2RConnectionEstablishedBlock)establishedBlock failed:(A2RConnectionFailedBlock)failed;
 
 - (void)closeWithCallback:(void (^)(void))closedBlock;
 
