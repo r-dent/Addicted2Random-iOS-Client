@@ -44,7 +44,7 @@ static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = NSLocalizedString(@"Layouts", @"Title of layouts view");
+    self.title = NSLocalizedString(@"Instruments", @"Title of layouts view");
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([A2RTableViewCell class]) bundle:[NSBundle mainBundle]]
      forCellReuseIdentifier:[A2RTableViewCell identifier]];
 }

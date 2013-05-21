@@ -32,7 +32,7 @@ static NSString* kA2RServerListKey = @"a2rServerList";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.title = NSLocalizedString(@"Serverliste", @"Title of the Server list view");
+    self.title = NSLocalizedString(@"Server", @"Title of the Server list view");
     
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([A2RTableViewCell class]) bundle:[NSBundle mainBundle]]
      forCellReuseIdentifier:[A2RTableViewCell identifier]];
@@ -95,7 +95,7 @@ static NSString* kA2RServerListKey = @"a2rServerList";
                 NSArray *jams = result;
                 cell.style = A2RTableViewCellStyleDisclosure;
                 A2RJamListController* vc = [[A2RJamListController alloc] initWithJams:jams andConnection:_connection];
-                vc.title = serverDict[@"name"];
+                vc.title = [NSString stringWithFormat:NSLocalizedString(@"Jams@%@", @"Title of Jam list controller."), serverDict[@"name"]];
                 [self.navigationController pushViewController:vc animated:YES];
             }];
         } failed:^{

@@ -19,6 +19,10 @@
     self.viewController = [[A2RServerListController alloc] initWithNibName:@"A2RServerListController" bundle:nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = navController;
+    
+    [[UINavigationBar appearance] setTintColor:A2R_BLUE];
+    [[UIBarButtonItem appearance] setTintColor:A2R_YELLOW];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

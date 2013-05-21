@@ -22,8 +22,6 @@
 
 @implementation A2RJamListController
 
-static NSString* kA2RJamListCell = @"a2rServerListCell";
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
