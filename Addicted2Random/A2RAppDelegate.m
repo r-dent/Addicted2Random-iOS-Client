@@ -17,6 +17,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [self.window addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.jpg"]]];
     self.viewController = [[A2RServerListController alloc] initWithNibName:@"A2RServerListController" bundle:nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = navController;

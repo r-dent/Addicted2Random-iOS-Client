@@ -45,6 +45,8 @@
 		30B63AEF1715DB7700C74A8C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B63AEE1715DB7700C74A8C /* Default-568h@2x.png */; };
 		30B63AF21715DB7700C74A8C /* A2RServerListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B63AF11715DB7700C74A8C /* A2RServerListController.m */; };
 		30B63AF51715DB7700C74A8C /* A2RServerListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30B63AF31715DB7700C74A8C /* A2RServerListController.xib */; };
+		30C0C29E174D834C00020E32 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 30C0C29C174D834C00020E32 /* bg.jpg */; };
+		30C0C29F174D834C00020E32 /* bg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 30C0C29D174D834C00020E32 /* bg@2x.jpg */; };
 		30C6AD1B174D6F7D008AAE28 /* A2RSplashHeadline.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD17174D6F7D008AAE28 /* A2RSplashHeadline.png */; };
 		30C6AD1C174D6F7D008AAE28 /* A2RSplashHeadline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD18174D6F7D008AAE28 /* A2RSplashHeadline@2x.png */; };
 		30C6AD1D174D6F7D008AAE28 /* A2RSplashLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD19174D6F7D008AAE28 /* A2RSplashLogo.png */; };
@@ -140,6 +142,8 @@
 		30B63AF01715DB7700C74A8C /* A2RServerListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A2RServerListController.h; sourceTree = "<group>"; };
 		30B63AF11715DB7700C74A8C /* A2RServerListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = A2RServerListController.m; sourceTree = "<group>"; };
 		30B63AF41715DB7700C74A8C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/A2RServerListController.xib; sourceTree = "<group>"; };
+		30C0C29C174D834C00020E32 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bg.jpg; path = images/bg.jpg; sourceTree = "<group>"; };
+		30C0C29D174D834C00020E32 /* bg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "bg@2x.jpg"; path = "images/bg@2x.jpg"; sourceTree = "<group>"; };
 		30C6AD17174D6F7D008AAE28 /* A2RSplashHeadline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = A2RSplashHeadline.png; path = images/A2RSplashHeadline.png; sourceTree = "<group>"; };
 		30C6AD18174D6F7D008AAE28 /* A2RSplashHeadline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "A2RSplashHeadline@2x.png"; path = "images/A2RSplashHeadline@2x.png"; sourceTree = "<group>"; };
 		30C6AD19174D6F7D008AAE28 /* A2RSplashLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = A2RSplashLogo.png; path = images/A2RSplashLogo.png; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		301DD405174A4D4500848723 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				30C0C29C174D834C00020E32 /* bg.jpg */,
+				30C0C29D174D834C00020E32 /* bg@2x.jpg */,
 				30C6AD17174D6F7D008AAE28 /* A2RSplashHeadline.png */,
 				30C6AD18174D6F7D008AAE28 /* A2RSplashHeadline@2x.png */,
 				30C6AD19174D6F7D008AAE28 /* A2RSplashLogo.png */,
@@ -418,6 +424,8 @@
 				30C6AD1D174D6F7D008AAE28 /* A2RSplashLogo.png in Resources */,
 				30C6AD1E174D6F7D008AAE28 /* A2RSplashLogo@2x.png in Resources */,
 				30C6AD23174D739D008AAE28 /* A2RSplashViewController.xib in Resources */,
+				30C0C29E174D834C00020E32 /* bg.jpg in Resources */,
+				30C0C29F174D834C00020E32 /* bg@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

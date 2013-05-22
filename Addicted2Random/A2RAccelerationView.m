@@ -46,7 +46,7 @@ typedef enum {
 }
 
 - (void)initValues {
-    self.backgroundColor = [UIColor blackColor];
+    //self.backgroundColor = [UIColor blackColor];
     _sourceY = 80;
     self.move = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"word_move"]];
     _move.center = CGPointMake(self.frame.size.width / 4, _sourceY);
