@@ -9,6 +9,7 @@
 #import "A2RAppDelegate.h"
 
 #import "A2RServerListController.h"
+#import "A2RSplashViewController.h"
 
 @implementation A2RAppDelegate
 
@@ -24,6 +25,11 @@
     [[UIBarButtonItem appearance] setTintColor:A2R_YELLOW];
     
     [self.window makeKeyAndVisible];
+    
+    A2RSplashViewController *splashVC = [[A2RSplashViewController alloc] init];
+    [self.viewController presentViewController:splashVC animated:NO completion:nil];
+    [NSTimer scheduledTimerWithTimeInterval:1.f target:splashVC selector:@selector(disappear) userInfo:nil repeats:NO];
+    
     return YES;
 }
 

@@ -45,6 +45,12 @@
 		30B63AEF1715DB7700C74A8C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B63AEE1715DB7700C74A8C /* Default-568h@2x.png */; };
 		30B63AF21715DB7700C74A8C /* A2RServerListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B63AF11715DB7700C74A8C /* A2RServerListController.m */; };
 		30B63AF51715DB7700C74A8C /* A2RServerListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30B63AF31715DB7700C74A8C /* A2RServerListController.xib */; };
+		30C6AD1B174D6F7D008AAE28 /* A2RSplashHeadline.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD17174D6F7D008AAE28 /* A2RSplashHeadline.png */; };
+		30C6AD1C174D6F7D008AAE28 /* A2RSplashHeadline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD18174D6F7D008AAE28 /* A2RSplashHeadline@2x.png */; };
+		30C6AD1D174D6F7D008AAE28 /* A2RSplashLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD19174D6F7D008AAE28 /* A2RSplashLogo.png */; };
+		30C6AD1E174D6F7D008AAE28 /* A2RSplashLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD1A174D6F7D008AAE28 /* A2RSplashLogo@2x.png */; };
+		30C6AD22174D739D008AAE28 /* A2RSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C6AD20174D739D008AAE28 /* A2RSplashViewController.m */; };
+		30C6AD23174D739D008AAE28 /* A2RSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD21174D739D008AAE28 /* A2RSplashViewController.xib */; };
 		30FDB3B5174CA36800139580 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FDB3B4174CA36800139580 /* Icon.png */; };
 		30FDB3B7174CA36F00139580 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FDB3B6174CA36F00139580 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
@@ -134,6 +140,13 @@
 		30B63AF01715DB7700C74A8C /* A2RServerListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = A2RServerListController.h; sourceTree = "<group>"; };
 		30B63AF11715DB7700C74A8C /* A2RServerListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = A2RServerListController.m; sourceTree = "<group>"; };
 		30B63AF41715DB7700C74A8C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/A2RServerListController.xib; sourceTree = "<group>"; };
+		30C6AD17174D6F7D008AAE28 /* A2RSplashHeadline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = A2RSplashHeadline.png; path = images/A2RSplashHeadline.png; sourceTree = "<group>"; };
+		30C6AD18174D6F7D008AAE28 /* A2RSplashHeadline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "A2RSplashHeadline@2x.png"; path = "images/A2RSplashHeadline@2x.png"; sourceTree = "<group>"; };
+		30C6AD19174D6F7D008AAE28 /* A2RSplashLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = A2RSplashLogo.png; path = images/A2RSplashLogo.png; sourceTree = "<group>"; };
+		30C6AD1A174D6F7D008AAE28 /* A2RSplashLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "A2RSplashLogo@2x.png"; path = "images/A2RSplashLogo@2x.png"; sourceTree = "<group>"; };
+		30C6AD1F174D739D008AAE28 /* A2RSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RSplashViewController.h; sourceTree = "<group>"; };
+		30C6AD20174D739D008AAE28 /* A2RSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RSplashViewController.m; sourceTree = "<group>"; };
+		30C6AD21174D739D008AAE28 /* A2RSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A2RSplashViewController.xib; sourceTree = "<group>"; };
 		30FDB3B4174CA36800139580 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		30FDB3B6174CA36F00139580 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +184,10 @@
 		301DD405174A4D4500848723 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				30C6AD17174D6F7D008AAE28 /* A2RSplashHeadline.png */,
+				30C6AD18174D6F7D008AAE28 /* A2RSplashHeadline@2x.png */,
+				30C6AD19174D6F7D008AAE28 /* A2RSplashLogo.png */,
+				30C6AD1A174D6F7D008AAE28 /* A2RSplashLogo@2x.png */,
 				301DD40A174A8EDA00848723 /* word_move.png */,
 				301DD40B174A8EDA00848723 /* word_move@2x.png */,
 				301DD40C174A8EDA00848723 /* word_phone.png */,
@@ -260,6 +277,9 @@
 				3032D20B172814AC00F2AFC5 /* A2RSpinnerViewController.h */,
 				3032D20C172814AC00F2AFC5 /* A2RSpinnerViewController.m */,
 				3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */,
+				30C6AD1F174D739D008AAE28 /* A2RSplashViewController.h */,
+				30C6AD20174D739D008AAE28 /* A2RSplashViewController.m */,
+				30C6AD21174D739D008AAE28 /* A2RSplashViewController.xib */,
 				301CE77117292DEA0082FD5C /* A2RTouchView.h */,
 				301CE77217292DEA0082FD5C /* A2RTouchView.m */,
 				301DD3F8174A2AB500848723 /* Master Views */,
@@ -393,6 +413,11 @@
 				301DD415174A8EDA00848723 /* word_your@2x.png in Resources */,
 				30FDB3B5174CA36800139580 /* Icon.png in Resources */,
 				30FDB3B7174CA36F00139580 /* Icon@2x.png in Resources */,
+				30C6AD1B174D6F7D008AAE28 /* A2RSplashHeadline.png in Resources */,
+				30C6AD1C174D6F7D008AAE28 /* A2RSplashHeadline@2x.png in Resources */,
+				30C6AD1D174D6F7D008AAE28 /* A2RSplashLogo.png in Resources */,
+				30C6AD1E174D6F7D008AAE28 /* A2RSplashLogo@2x.png in Resources */,
+				30C6AD23174D739D008AAE28 /* A2RSplashViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +441,7 @@
 				307BA834172A835800ADC8C2 /* A2RAccelerationView.m in Sources */,
 				301DD3FF174A2AF100848723 /* A2RTableView.m in Sources */,
 				301DD402174A2FC100848723 /* A2RTableViewCell.m in Sources */,
+				30C6AD22174D739D008AAE28 /* A2RSplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
