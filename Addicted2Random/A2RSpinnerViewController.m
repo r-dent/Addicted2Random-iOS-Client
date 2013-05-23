@@ -75,6 +75,8 @@ typedef enum {
             //NSLog(@"Touch Position: %f %f", position.x, position.y);
         }
     }];
+    
+    [self modeButtonPressed:nil];
 }
 
 - (void)didReceiveMemoryWarning

@@ -34,6 +34,7 @@
 		3032D20E172814AC00F2AFC5 /* A2RSpinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3032D20C172814AC00F2AFC5 /* A2RSpinnerViewController.m */; };
 		3032D20F172814AC00F2AFC5 /* A2RSpinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */; };
 		307BA834172A835800ADC8C2 /* A2RAccelerationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307BA833172A835800ADC8C2 /* A2RAccelerationView.m */; };
+		30A26B8A174E37460041DF53 /* RGRingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A26B89174E37460041DF53 /* RGRingBuffer.m */; };
 		30B63AD91715DB7600C74A8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63AD81715DB7600C74A8C /* UIKit.framework */; };
 		30B63ADB1715DB7600C74A8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63ADA1715DB7600C74A8C /* Foundation.framework */; };
 		30B63ADD1715DB7600C74A8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B63ADC1715DB7600C74A8C /* CoreGraphics.framework */; };
@@ -126,6 +127,8 @@
 		3032D20D172814AC00F2AFC5 /* A2RSpinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A2RSpinnerViewController.xib; sourceTree = "<group>"; };
 		307BA832172A835800ADC8C2 /* A2RAccelerationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RAccelerationView.h; sourceTree = "<group>"; };
 		307BA833172A835800ADC8C2 /* A2RAccelerationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RAccelerationView.m; sourceTree = "<group>"; };
+		30A26B88174E37460041DF53 /* RGRingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGRingBuffer.h; path = vendor/RGRingBuffer.h; sourceTree = "<group>"; };
+		30A26B89174E37460041DF53 /* RGRingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGRingBuffer.m; path = vendor/RGRingBuffer.m; sourceTree = "<group>"; };
 		30B63AD51715DB7600C74A8C /* Addicted2Random.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Addicted2Random.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B63AD81715DB7600C74A8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30B63ADA1715DB7600C74A8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -213,6 +216,8 @@
 				301CE77C17295B970082FD5C /* NS+OSCAdditions.m */,
 				301CE778172959AF0082FD5C /* OSCPacket.h */,
 				301CE779172959AF0082FD5C /* OSCPacket.m */,
+				30A26B88174E37460041DF53 /* RGRingBuffer.h */,
+				30A26B89174E37460041DF53 /* RGRingBuffer.m */,
 				3026FD4D1717001300552EB3 /* SocketRocket.xcodeproj */,
 			);
 			name = vendor;
@@ -450,6 +455,7 @@
 				301DD3FF174A2AF100848723 /* A2RTableView.m in Sources */,
 				301DD402174A2FC100848723 /* A2RTableViewCell.m in Sources */,
 				30C6AD22174D739D008AAE28 /* A2RSplashViewController.m in Sources */,
+				30A26B8A174E37460041DF53 /* RGRingBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

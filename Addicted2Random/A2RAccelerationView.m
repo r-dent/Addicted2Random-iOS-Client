@@ -8,6 +8,8 @@
 
 #import "A2RAccelerationView.h"
 
+#import "RGRingBuffer.h"
+
 typedef enum {
     A2RAccelerationComponentX = 0,
     A2RAccelerationComponentY,
@@ -17,7 +19,7 @@ typedef enum {
 @interface A2RAccelerationView() <UIAccelerometerDelegate> {
     UIAccelerometer *_accelerometer;
     UIAcceleration *_lastAcceleration;
-    NSMutableArray *_values;
+    RGRingBuffer *_values;
     CGFloat _sourceY;
 }
 
@@ -71,7 +73,7 @@ typedef enum {
         _accelerometer.updateInterval = .03f;
         _accelerometer.delegate = self;
         if (_values == nil) {
-            _values = [NSMutableArray array];
+            _values = [[RGRingBuffer alloc] initWithCapacity:200];
         }
     }
     
@@ -102,15 +104,21 @@ typedef enum {
     CGPoint currentPoint = startingPoint;
     [color set];
     BOOL flowUp = startingPoint.y >= self.frame.size.height / 2;
+    CGFloat maxLength = flowUp ? startingPoint.y : self.frame.size.height - startingPoint.y;
     
-    for (int i = 0; i < _values.count; i++) {
-        CGFloat componentValue = [self valueFromAcceleration:_values[_values.count - i - 1] component:component];
+    for (int i = 0; i < _values.size; i++) {
+        CGFloat componentValue = [self valueFromAcceleration:[_values objectAtIndex:_values.size - i - 1] component:component];
         
         CGPoint point = CGPointMake(startingPoint.x + (componentValue * 10), startingPoint.y + ((flowUp ? -i : i) * 2));
         
         UIBezierPath *path = [UIBezierPath bezierPath];
         [path moveToPoint:currentPoint];
-        [path setLineWidth: 6.f - MIN(5.f, i * .05f)];
+        if (point.y < maxLength - 50) {
+            [path setLineWidth: 6.f - MIN(5.f, i * .05f)];
+        }
+        else {
+            [path setLineWidth: .02f * MAX(0, maxLength - point.y)];
+        }
         [path addLineToPoint: point];
         [path stroke];
         
@@ -122,7 +130,7 @@ typedef enum {
             break;
     }
     
-    CGFloat componentValue = _values.count ? [self valueFromAcceleration:_values[_values.count - 1] component:component] : 0;
+    CGFloat componentValue = _values.size ? [self valueFromAcceleration:[_values objectAtIndex:_values.size - 1] component:component] : 0;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path setLineWidth: 0.f];
