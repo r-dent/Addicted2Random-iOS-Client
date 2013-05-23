@@ -49,7 +49,7 @@ typedef enum {
 
 - (void)initValues {
     //self.backgroundColor = [UIColor blackColor];
-    _sourceY = 80;
+    _sourceY = 44;
     self.move = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"word_move"]];
     _move.center = CGPointMake(self.frame.size.width / 4, _sourceY);
     [self addSubview:_move];
@@ -73,7 +73,7 @@ typedef enum {
         _accelerometer.updateInterval = .03f;
         _accelerometer.delegate = self;
         if (_values == nil) {
-            _values = [[RGRingBuffer alloc] initWithCapacity:200];
+            _values = [[RGRingBuffer alloc] initWithCapacity:300];
         }
     }
     

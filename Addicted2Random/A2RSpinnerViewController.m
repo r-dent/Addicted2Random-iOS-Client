@@ -56,6 +56,9 @@ typedef enum {
     // Do any additional setup after loading the view from its nib.
     self.title = NSLocalizedString(@"Spinner", @"Spinner View title");
     
+    [self.navigationController setNavigationBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
     if (_spinner[@"address"] != nil) {
         _OSCAddress = _spinner[@"address"];
     }
