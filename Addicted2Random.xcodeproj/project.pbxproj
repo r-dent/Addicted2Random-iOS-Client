@@ -617,11 +617,13 @@
 		30B63AFA1715DB7700C74A8C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Roman Gille";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Addicted2Random/Addicted2Random-Prefix.pch";
 				INFOPLIST_FILE = "Addicted2Random/Addicted2Random-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8DBB303A-54B3-40A4-92C7-F510BE55A2A9";
 				USER_HEADER_SEARCH_PATHS = "vendor/SocketRocket/**";
 				WRAPPER_EXTENSION = app;
 			};
