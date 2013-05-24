@@ -32,7 +32,7 @@ static NSString* kA2RServerListKey = @"a2rServerList";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.title = NSLocalizedString(@"Server", @"Title of the Server list view");
+    self.title = NSLocalizedString(@"Addicted 2 Random", @"Title of the Server list view");
     
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([A2RTableViewCell class]) bundle:[NSBundle mainBundle]]
      forCellReuseIdentifier:[A2RTableViewCell identifier]];

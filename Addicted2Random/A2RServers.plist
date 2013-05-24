@@ -8,15 +8,15 @@
 		<key>address</key>
 		<string>ws://master.radiofabrik.at:8080</string>
 		<key>description</key>
-		<string>The neverending Server</string>
+		<string>Connect to Radiofabrik in Salzburg</string>
 	</dict>
 	<dict>
 		<key>description</key>
-		<string>Alex sein lokaler Server</string>
+		<string>Connect to local server on default address</string>
 		<key>address</key>
 		<string>ws://192.168.1.100:8080</string>
 		<key>name</key>
-		<string>Alex Local</string>
+		<string>Connect local</string>
 	</dict>
 </array>
 </plist>

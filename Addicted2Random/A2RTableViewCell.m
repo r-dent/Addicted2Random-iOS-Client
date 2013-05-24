@@ -30,6 +30,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    self.backgroundView.hidden = selected;
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    self.backgroundView.hidden = highlighted;
+    
 }
 
 + (CGFloat)cellHeight {
