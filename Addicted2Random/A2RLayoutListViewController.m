@@ -22,8 +22,6 @@
 
 @implementation A2RLayoutListViewController
 
-static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,6 +45,11 @@ static NSString *kA2RLayoutCellIdentifier = @"A2RLayoutCell";
     self.title = NSLocalizedString(@"Instruments", @"Title of layouts view");
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([A2RTableViewCell class]) bundle:[NSBundle mainBundle]]
      forCellReuseIdentifier:[A2RTableViewCell identifier]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

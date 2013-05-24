@@ -22,8 +22,11 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = navController;
     
-    [[UINavigationBar appearance] setTintColor:A2R_BLUE];
-    [[UIBarButtonItem appearance] setTintColor:A2R_YELLOW];
+    UIImage *backgroundImage = [UIImage imageNamed:@"navbar_background"];
+    [[UINavigationBar appearance] setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+    
+    backgroundImage = [[UIImage imageNamed:@"button_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 15, 5, 5)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backgroundImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     [self.window makeKeyAndVisible];
     

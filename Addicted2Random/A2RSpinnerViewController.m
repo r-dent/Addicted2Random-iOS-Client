@@ -19,6 +19,7 @@ typedef enum {
 @interface A2RSpinnerViewController () <A2RAccelerationViewDelegate> {
     A2RSpinnerMode _mode;
     NSString *_OSCAddress;
+    UISwipeGestureRecognizer *_swipeRecognizer;
 }
 
 @property (nonatomic, strong) NSDictionary *spinner;
@@ -56,8 +57,7 @@ typedef enum {
     // Do any additional setup after loading the view from its nib.
     self.title = NSLocalizedString(@"Spinner", @"Spinner View title");
     
-    [self.navigationController setNavigationBarHidden:YES];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     if (_spinner[@"address"] != nil) {
         _OSCAddress = _spinner[@"address"];
@@ -79,6 +79,12 @@ typedef enum {
         }
     }];
     
+    _swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didRecognizeSwipe)];
+    _swipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft || UISwipeGestureRecognizerDirectionRight;
+    _swipeRecognizer.numberOfTouchesRequired = 1;
+    _swipeRecognizer.enabled = YES;
+    _accelerationView.gestureRecognizers = [NSArray arrayWithObject:_swipeRecognizer];
+    
     [self modeButtonPressed:nil];
 }
 
@@ -99,6 +105,10 @@ typedef enum {
         _mode = A2RSpinnerModeTouch;
         [_modeButton setTitle:@"Mode: Touch" forState:UIControlStateNormal];
     }
+}
+
+- (void)didRecognizeSwipe {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - A2RAccelerationView delegate

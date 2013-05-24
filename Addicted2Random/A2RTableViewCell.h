@@ -20,6 +20,7 @@ typedef enum {
 + (NSString*)identifier;
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *throbber;
 @property (weak, nonatomic) IBOutlet UILabel *description;
 @property (assign, nonatomic) A2RTableViewCellStyle style;
 

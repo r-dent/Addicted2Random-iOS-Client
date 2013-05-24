@@ -33,7 +33,7 @@
 }
 
 + (CGFloat)cellHeight {
-    return 57.f;
+    return 65.f;
 }
 
 + (NSString *)identifier {
@@ -44,18 +44,16 @@
     if (_style != style) {
         switch (style) {
             case A2RTableViewCellStyleLoading: {
-                UIActivityIndicatorView *throbber = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-                [throbber startAnimating];
-                self.accessoryView = throbber;
+                [_throbber startAnimating];
                 break;
             }
             case A2RTableViewCellStyleDisclosure: {
-                UIImageView* arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"disclosure"]];
-                self.accessoryView = arrowView;
+                [_throbber stopAnimating];
                 break;
             }
                 
             default:
+                [_throbber stopAnimating];
                 break;
         }
     }
