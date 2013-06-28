@@ -70,6 +70,10 @@
 		30C6AD1E174D6F7D008AAE28 /* A2RSplashLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD1A174D6F7D008AAE28 /* A2RSplashLogo@2x.png */; };
 		30C6AD22174D739D008AAE28 /* A2RSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C6AD20174D739D008AAE28 /* A2RSplashViewController.m */; };
 		30C6AD23174D739D008AAE28 /* A2RSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30C6AD21174D739D008AAE28 /* A2RSplashViewController.xib */; };
+		30F4EB66177D9C4C00411ED8 /* button_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F4EB64177D9C4C00411ED8 /* button_add.png */; };
+		30F4EB67177D9C4C00411ED8 /* button_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F4EB65177D9C4C00411ED8 /* button_add@2x.png */; };
+		30F4EB6F177D9F1200411ED8 /* A2RServerAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4EB6D177D9F1200411ED8 /* A2RServerAddViewController.m */; };
+		30F4EB70177D9F1200411ED8 /* A2RServerAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30F4EB6E177D9F1200411ED8 /* A2RServerAddViewController.xib */; };
 		30FDB3B5174CA36800139580 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FDB3B4174CA36800139580 /* Icon.png */; };
 		30FDB3B7174CA36F00139580 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FDB3B6174CA36F00139580 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
@@ -186,6 +190,11 @@
 		30C6AD1F174D739D008AAE28 /* A2RSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RSplashViewController.h; sourceTree = "<group>"; };
 		30C6AD20174D739D008AAE28 /* A2RSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RSplashViewController.m; sourceTree = "<group>"; };
 		30C6AD21174D739D008AAE28 /* A2RSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A2RSplashViewController.xib; sourceTree = "<group>"; };
+		30F4EB64177D9C4C00411ED8 /* button_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_add.png; path = images/button_add.png; sourceTree = "<group>"; };
+		30F4EB65177D9C4C00411ED8 /* button_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_add@2x.png"; path = "images/button_add@2x.png"; sourceTree = "<group>"; };
+		30F4EB6C177D9F1200411ED8 /* A2RServerAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2RServerAddViewController.h; sourceTree = "<group>"; };
+		30F4EB6D177D9F1200411ED8 /* A2RServerAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2RServerAddViewController.m; sourceTree = "<group>"; };
+		30F4EB6E177D9F1200411ED8 /* A2RServerAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A2RServerAddViewController.xib; sourceTree = "<group>"; };
 		30FDB3B4174CA36800139580 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		30FDB3B6174CA36F00139580 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +238,8 @@
 				30C6AD1A174D6F7D008AAE28 /* A2RSplashLogo@2x.png */,
 				30C0C29C174D834C00020E32 /* bg.jpg */,
 				30C0C29D174D834C00020E32 /* bg@2x.jpg */,
+				30F4EB64177D9C4C00411ED8 /* button_add.png */,
+				30F4EB65177D9C4C00411ED8 /* button_add@2x.png */,
 				30C0CD6F174F908A0007141C /* button_back.png */,
 				30C0CD70174F908A0007141C /* button_back@2x.png */,
 				30C0CD71174F908A0007141C /* cell_background.png */,
@@ -330,6 +341,9 @@
 				3022336D17269D0700B42913 /* A2RLayoutListViewController.h */,
 				3022336E17269D0700B42913 /* A2RLayoutListViewController.m */,
 				3022336F17269D0700B42913 /* A2RLayoutListViewController.xib */,
+				30F4EB6C177D9F1200411ED8 /* A2RServerAddViewController.h */,
+				30F4EB6D177D9F1200411ED8 /* A2RServerAddViewController.m */,
+				30F4EB6E177D9F1200411ED8 /* A2RServerAddViewController.xib */,
 				30B63AF01715DB7700C74A8C /* A2RServerListController.h */,
 				30B63AF11715DB7700C74A8C /* A2RServerListController.m */,
 				30B63AF31715DB7700C74A8C /* A2RServerListController.xib */,
@@ -495,6 +509,9 @@
 				30513E48174FA9980022DE4A /* text_swipe@2x.png in Resources */,
 				30513E4F174FAB820022DE4A /* cell_background_on.png in Resources */,
 				30513E50174FAB820022DE4A /* cell_background_on@2x.png in Resources */,
+				30F4EB66177D9C4C00411ED8 /* button_add.png in Resources */,
+				30F4EB67177D9C4C00411ED8 /* button_add@2x.png in Resources */,
+				30F4EB70177D9F1200411ED8 /* A2RServerAddViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +537,7 @@
 				301DD402174A2FC100848723 /* A2RTableViewCell.m in Sources */,
 				30C6AD22174D739D008AAE28 /* A2RSplashViewController.m in Sources */,
 				30A26B8A174E37460041DF53 /* RGRingBuffer.m in Sources */,
+				30F4EB6F177D9F1200411ED8 /* A2RServerAddViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

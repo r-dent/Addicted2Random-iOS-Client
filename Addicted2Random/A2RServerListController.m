@@ -12,13 +12,14 @@
 #import "A2RJamListController.h"
 #import "A2RTableView.h"
 #import "A2RTableViewCell.h"
+#import "A2RServerAddViewController.h"
 
 
 @interface A2RServerListController () <UITableViewDataSource, UITableViewDelegate> {
     BOOL _waitingForServerResponse;
 }
 
-@property (nonatomic, strong) NSArray *serverList;
+@property (nonatomic, strong) NSMutableArray *serverList;
 @property (nonatomic, strong) A2RConnection *connection;
 @property (weak, nonatomic) IBOutlet A2RTableView *tableView;
 
@@ -32,17 +33,21 @@ static NSString* kA2RServerListKey = @"a2rServerList";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.title = NSLocalizedString(@"Addicted 2 Random", @"Title of the Server list view");
+    self.title = NSLocalizedString(@"addicted2random", @"Title of the Server list view");
     
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([A2RTableViewCell class]) bundle:[NSBundle mainBundle]]
      forCellReuseIdentifier:[A2RTableViewCell identifier]];
     
     _waitingForServerResponse = NO;
-    self.serverList = [[NSUserDefaults standardUserDefaults] arrayForKey:kA2RServerListKey];
+    self.serverList = [[[NSUserDefaults standardUserDefaults] arrayForKey:kA2RServerListKey] mutableCopy];
     if (!_serverList.count) {
         NSString *serversFilePath = [[NSBundle mainBundle] pathForResource:@"A2RServers" ofType:@"plist"];
-        self.serverList = [[NSArray alloc] initWithContentsOfFile:serversFilePath];
+        self.serverList = [[NSMutableArray alloc] initWithContentsOfFile:serversFilePath];
     }
+
+    UIImage *backgroundImage = [[UIImage imageNamed:@"button_add"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"add server" style:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddServerButton:)];
+    [self.navigationItem.leftBarButtonItem setBackgroundImage:backgroundImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,6 +115,15 @@ static NSString* kA2RServerListKey = @"a2rServerList";
     return [A2RTableViewCell cellHeight];
 }
 
+#pragma mark - Button Handling
+
+- (void)didPressAddServerButton:(id)sender {
+    A2RServerAddViewController *vc = [[A2RServerAddViewController alloc] initWithServerAddBlock:^(NSDictionary *serverDict) {
+        [_serverList addObject:serverDict];
+        [_tableView reloadData];
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 @end
