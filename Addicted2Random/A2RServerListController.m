@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *serverList;
 @property (nonatomic, strong) A2RConnection *connection;
 @property (weak, nonatomic) IBOutlet A2RTableView *tableView;
+@property (nonatomic, assign) BOOL isEditing;
 
 @end
 
@@ -46,8 +47,10 @@ static NSString* kA2RServerListKey = @"a2rServerList";
     }
 
     UIImage *backgroundImage = [[UIImage imageNamed:@"button_add"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"add server" style:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddServerButton:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"+", nil) style:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddServerButton:)];
     [self.navigationItem.leftBarButtonItem setBackgroundImage:backgroundImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"edit", nil) style:UIBarButtonSystemItemEdit target:self action:@selector(didPressEditButton:)];
+    [self.navigationItem.rightBarButtonItem setBackgroundImage:backgroundImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +62,12 @@ static NSString* kA2RServerListKey = @"a2rServerList";
 - (void)dealloc {
     self.serverList = nil;
     self.connection = nil;
+}
+
+- (void)setIsEditing:(BOOL)editing {
+    [_tableView setEditing:editing animated:YES];
+    self.navigationItem.rightBarButtonItem.title = editing ? NSLocalizedString(@"done", nil) : NSLocalizedString(@"edit", nil);
+    _isEditing = editing;
 }
 
 #pragma mark - TableView stuff
@@ -115,14 +124,39 @@ static NSString* kA2RServerListKey = @"a2rServerList";
     return [A2RTableViewCell cellHeight];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Delete cell %i", indexPath.row);
+    [_tableView beginUpdates];
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [_serverList removeObjectAtIndex:indexPath.row];
+    [[NSUserDefaults standardUserDefaults] setObject:_serverList forKey:kA2RServerListKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [_tableView endUpdates];
+}
+
 #pragma mark - Button Handling
 
 - (void)didPressAddServerButton:(id)sender {
     A2RServerAddViewController *vc = [[A2RServerAddViewController alloc] initWithServerAddBlock:^(NSDictionary *serverDict) {
         [_serverList addObject:serverDict];
         [_tableView reloadData];
+        [[NSUserDefaults standardUserDefaults] setObject:_serverList forKey:kA2RServerListKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }];
     [self.navigationController pushViewController:vc animated:YES];
+    self.isEditing = NO;
+}
+
+- (void)didPressEditButton:(id)sender {
+    self.isEditing = !self.editing;
 }
 
 
